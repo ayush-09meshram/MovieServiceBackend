@@ -2,21 +2,30 @@ package com.stackroute.movieservice.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Moviesz")
 public class Movie {
     @Id
     @ApiModelProperty(notes = "The database generated product ID")
+
     private int imdbId;
     @ApiModelProperty(notes = "The database generated movieTitle")
+
     private String movieTitle;
     @ApiModelProperty(notes = "The database generated url")
+
     private String url;
     @ApiModelProperty(notes = "The database generated rating")
+
     private float rating;
     @ApiModelProperty(notes = "The database generated yearOfRelease")
+
     private String yearOfRelease;
 
     public Movie(){

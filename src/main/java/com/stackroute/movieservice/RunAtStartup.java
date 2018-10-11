@@ -1,3 +1,4 @@
+/*
 package com.stackroute.movieservice;
 import com.stackroute.movieservice.domain.Movie;
 import com.stackroute.movieservice.repository.MovieRepository;
@@ -11,12 +12,14 @@ import org.springframework.context.ApplicationListener;
 public class RunAtStartup implements ApplicationListener<ContextRefreshedEvent> {
 @Autowired
     MovieRepository movieRepository;
-    /**
+    */
+/**
      * This method is called during Spring's startup.
      *
      * @param event Event raised when an ApplicationContext gets initialized or
      * refreshed.
-     */
+     *//*
+
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
         System.out.println("ApplicationListener Invoked At Spring Container Startup");
@@ -31,4 +34,4 @@ public class RunAtStartup implements ApplicationListener<ContextRefreshedEvent> 
         return;
     }
 
-}
+}*/

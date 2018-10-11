@@ -1,3 +1,4 @@
+/*
 package com.stackroute.movieservice;
 
 import com.stackroute.movieservice.domain.Movie;
@@ -26,4 +27,4 @@ public class CommandAtStartup implements CommandLineRunner {
         movie.setMovieTitle("The Mum");
         movieRepository.save(movie);
     }
-}
+}*/

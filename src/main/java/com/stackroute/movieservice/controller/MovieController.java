@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,9 +51,9 @@ public class MovieController {
         ResponseEntity responseEntity;
         try{
             movieService.updateMovie(movie);
-            responseEntity = new ResponseEntity<String>("Successfully updated", HttpStatus.CREATED);
+            responseEntity = new ResponseEntity<String>("Successfully updated", HttpStatus.OK);
         } catch (MovieNotFoundException ex){
-            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.NO_CONTENT);
         }
         return responseEntity;
     }
@@ -63,9 +64,9 @@ public class MovieController {
         ResponseEntity responseEntity;
         try{
             movieService.deleteMovie(movie);
-            responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.CREATED);
+            responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.GONE);
         } catch (MovieNotFoundException ex){
-            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.NOT_FOUND);
         }
         return responseEntity;
     }
@@ -78,7 +79,7 @@ public class MovieController {
             movies = movieService.getMovieByName(movieTitle);
             return new ResponseEntity<Optional<Movie>>(movies,HttpStatus.OK);
         } catch (MovieNotFoundException ex) {
-            return new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+            return new ResponseEntity<String>(ex.getMessage(),HttpStatus.NO_CONTENT);
         }
 
     }

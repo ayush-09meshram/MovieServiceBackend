@@ -1,3 +1,4 @@
+/*
 package com.stackroute.movieservice.config;
 
 import org.apache.catalina.servlets.WebdavServlet;
@@ -13,4 +14,4 @@ public class WebConfiguration {
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
-}
+}*/
