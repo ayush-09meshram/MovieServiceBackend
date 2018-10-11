@@ -138,8 +138,7 @@ public class MovieControllerTest {
         updatedMovie.setImdbId(101);
         updatedMovie.setYearOfRelease("Jenny");
         updatedMovie.setRating(10);*/
-       movieService.deleteMovie(movie);
-        when(movieService.updateMovie(movie)).thenThrow(MovieNotFoundException.class);
+        when(movieService.updateMovie(any())).thenThrow(MovieNotFoundException.class);
         mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/movie")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(movie)))
