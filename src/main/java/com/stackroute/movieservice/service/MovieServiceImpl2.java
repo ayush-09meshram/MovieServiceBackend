@@ -36,9 +36,8 @@ public class MovieServiceImpl2 implements MovieService {
     @Override
     public void deleteMovie(Movie movie) throws MovieNotFoundException {
         if(!(movieRepository.existsById(movie.getImdbId()))){
-            throw new MovieNotFoundException("Movie not found");
+            movieRepository.delete(movie);
         }
-        movieRepository.delete(movie);
         if(movie == null){
             throw new MovieNotFoundException("Movie not found");
         }
@@ -59,9 +58,8 @@ public class MovieServiceImpl2 implements MovieService {
     @Override
     public Movie updateMovie(Movie movie) throws MovieNotFoundException{
         if(!(movieRepository.existsById(movie.getImdbId()))){
-            throw new MovieNotFoundException("Movie not found");
+            movie = movieRepository.save(movie);
         }
-        movie = movieRepository.save(movie);
         if(movie == null){
             throw new MovieNotFoundException("Movie not found");
         }

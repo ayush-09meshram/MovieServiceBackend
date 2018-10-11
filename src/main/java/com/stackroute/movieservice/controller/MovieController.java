@@ -66,7 +66,7 @@ public class MovieController {
             movieService.deleteMovie(movie);
             responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.GONE);
         } catch (MovieNotFoundException ex){
-            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.NOT_FOUND);
+            responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.METHOD_NOT_ALLOWED);
         }
         return responseEntity;
     }
@@ -79,7 +79,7 @@ public class MovieController {
             movies = movieService.getMovieByName(movieTitle);
             return new ResponseEntity<Optional<Movie>>(movies,HttpStatus.OK);
         } catch (MovieNotFoundException ex) {
-            return new ResponseEntity<String>(ex.getMessage(),HttpStatus.NO_CONTENT);
+            return new ResponseEntity<String>(ex.getMessage(),HttpStatus.NOT_FOUND);
         }
 
     }
